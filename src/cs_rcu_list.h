@@ -111,6 +111,8 @@ namespace libguarded
 
 		iterator erase(const_iterator pos);
 
+		size_type size() const noexcept; 
+
 	  private:
 		struct node
 		{
@@ -658,6 +660,12 @@ namespace libguarded
 		}
 
 		return iterator(oldNext);
+	}
+
+	template<typename T, typename M, typename Alloc>
+	typename rcu_list<T, M, Alloc>::size_type rcu_list<T, M, Alloc>::size() const noexcept
+	{
+		return std::distance(this->begin(), this->end());
 	}
 
 	template<typename T>
