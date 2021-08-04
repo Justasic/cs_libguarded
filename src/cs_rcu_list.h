@@ -107,11 +107,11 @@ namespace libguarded
 		void emplace_front(Us &&...vs);
 
 		template<typename... Us>
-		void     emplace_back(Us &&...vs);
+		void      emplace_back(Us &&...vs);
 
-		iterator erase(const_iterator pos);
+		iterator  erase(const_iterator pos);
 
-		size_type size() const noexcept; 
+		size_type size() const noexcept;
 
 	  private:
 		struct node
@@ -625,7 +625,7 @@ namespace libguarded
 			iter.m_current->deleted = true;
 
 			node *oldPrev           = iter.m_current->back.load();
-			node *oldNext           = iter.m_current->next.load();
+			oldNext                 = iter.m_current->next.load();
 
 			if (oldPrev)
 			{
