@@ -665,7 +665,10 @@ namespace libguarded
 	template<typename T, typename M, typename Alloc>
 	typename rcu_list<T, M, Alloc>::size_type rcu_list<T, M, Alloc>::size() const noexcept
 	{
-		return std::distance(this->begin(), this->end());
+		rcu_list<T, M, Alloc>::size_type ret = 0;
+		for (auto it = this->begin(); it != this->end(); ++it, ++ret)
+			;
+		return ret;
 	}
 
 	template<typename T>
