@@ -184,7 +184,7 @@ namespace libguarded
 			allocator_type alloc;
 
 		  public:
-			explicit deallocator(const allocator_type &alloc) noexcept: alloc(alloc) {}
+			explicit deallocator(const allocator_type &a) noexcept: alloc(a) {}
 
 			void operator()(pointer p)
 			{
