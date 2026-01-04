@@ -7,7 +7,7 @@ if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.19.0")
    cmake_policy(SET CMP0110 NEW)
 endif()
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 
 project(cs_libguarded)
 
@@ -108,26 +108,26 @@ if(BUILD_TESTS)
 endif()
 
 configure_file(
-   ${CMAKE_SOURCE_DIR}/cmake/CsLibGuardedConfig.cmake
-   ${CMAKE_BINARY_DIR}/CsLibGuardedConfig.cmake
+   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/CsLibGuardedConfig.cmake
+   ${CMAKE_CURRENT_BINARY_DIR}/CsLibGuardedConfig.cmake
    @ONLY
 )
 
 configure_file(
-   ${CMAKE_SOURCE_DIR}/cmake/CsLibGuardedConfigVersion.cmake
-   ${CMAKE_BINARY_DIR}/CsLibGuardedConfigVersion.cmake
+   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/CsLibGuardedConfigVersion.cmake
+   ${CMAKE_CURRENT_BINARY_DIR}/CsLibGuardedConfigVersion.cmake
    @ONLY
 )
 
 install(
    FILES
-      ${CMAKE_BINARY_DIR}/CsLibGuardedConfig.cmake
-      ${CMAKE_BINARY_DIR}/CsLibGuardedConfigVersion.cmake
+      ${CMAKE_CURRENT_BINARY_DIR}/CsLibGuardedConfig.cmake
+      ${CMAKE_CURRENT_BINARY_DIR}/CsLibGuardedConfigVersion.cmake
    DESTINATION ${PKG_PREFIX}
 )
 
 # file locations for building
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 include(src/cs_libguarded.cmake)
 
@@ -139,6 +139,6 @@ endif()
 
 message("")
 message("CsLibGuarded configured to run on:  ${CMAKE_SYSTEM_NAME} ${TARGETBITS} bit, ${CMAKE_BUILD_TYPE} Mode")
-message("CsLibGuarded will be built in:      ${CMAKE_BINARY_DIR}")
+message("CsLibGuarded will be built in:      ${CMAKE_CURRENT_BINARY_DIR}")
 message("CsLibGuarded will be installed in:  ${CMAKE_INSTALL_PREFIX}")
 message("\n")
