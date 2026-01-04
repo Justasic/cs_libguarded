@@ -7,11 +7,6 @@ if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.19.0")
    cmake_policy(SET CMP0110 NEW)
 endif()
 
-if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.20.0")
-   # enable RTTI on MSVC
-   cmake_policy(SET CMP0117 OLD)
-endif()
-
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 project(cs_libguarded)
