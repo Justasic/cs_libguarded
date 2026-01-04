@@ -112,6 +112,8 @@ class rcu_list
 
       iterator erase(const_iterator pos);
 
+	  size_type size() const;
+
    private:
       struct node {
          // uncopyable, unmoveable
@@ -724,6 +726,16 @@ auto rcu_list<T, M, Alloc>::erase(const_iterator iter) -> iterator
    }
 
    return iterator(oldNext);
+}
+
+template <typename T, typename M, typename Alloc>
+auto rcu_list<T, M, Alloc>::size() const -> size_type
+{
+	rcu_list<T, M, Alloc>::size_type count = 0;
+	for (auto it = this->begin(); it != this->end(); ++it, ++count)
+		;
+
+	return count;
 }
 
 template <typename T>
